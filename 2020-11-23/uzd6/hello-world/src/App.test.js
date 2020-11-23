@@ -1,8 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import Polygon from './Modulis/Modulis';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('calculates area correctly', () => {
+  expect(new Polygon().calcArea()).toEqual(6);
 });
