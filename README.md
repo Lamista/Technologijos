@@ -1,2 +1,0 @@
-# Technologijos
-Technologijos
