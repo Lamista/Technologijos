@@ -1,8 +1,18 @@
-console.log('Pasileido');
+//naujo komponento sablonas
+class Component extends React.Component {
+    render() {
+        return (
+            <div>
+            </div>
+        );
+    }
+};
+Component.propTypes = {
+    // Properties JSON
+};
 
-for (var i=0; i< 10; i++) {
-    console.log('Pasileido ' + i)
-}
-
-const component = <h1>Hello, world</h1>;
-ReactDOM.render(component,document.getElementById('root'));
+// sakninio komponento nupiesimas
+ReactDOM.render(
+    <Component prop1={prop1Value} />,
+    document.getElementById('root')
+);
