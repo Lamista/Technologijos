@@ -1,14 +1,18 @@
-var styles = {
-    container: { background: 'red' },
-    greetingText: { color: 'green' }
-};
-
+//naujo komponento sablonas
 class Component extends React.Component {
     render() {
         return (
-            <div style={styles.container}>
-                <p style={styles.greetingText}>Tekstas yra toks</p>
+            <div>
             </div>
         );
     }
-}
+};
+Component.propTypes = {
+    // Properties JSON
+};
+
+// sakninio komponento nupiesimas
+ReactDOM.render(
+    <Component prop1={prop1Value} />,
+    document.getElementById('root')
+);
