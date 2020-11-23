@@ -1,15 +1,14 @@
+var styles = {
+    container: { background: 'red' },
+    greetingText: { color: 'green' }
+};
 
-class HelloComponent extends React.Component {
+class Component extends React.Component {
     render() {
-        return (<div>Hello {this.props.name}</div>);
+        return (
+            <div style={styles.container}>
+                <p style={styles.greetingText}>Tekstas yra toks</p>
+            </div>
+        );
     }
 }
-
-HelloComponent.propTypes = {
-    name: PropTypes.string.isRequired
-}
-
-ReactDOM.render(
-    (<HelloComponent name="Jane" />),
-    document.getElementById('root')
-);
