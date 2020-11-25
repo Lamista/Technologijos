@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Papildomas from './Papildomas';
+import Papildomas from './components/Papildomas';
 import Forma from './components/Forma';
 import ProductAdministrationComponent from './components/ProductAdministrationComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/HeaderComponent';
 import SokantisPaveiksliukas from './components/SokantisPaveiksliukas';
+import AppHooks from './components/PapildomasHooks';
+import IntervalinisKomponentasHooks from './components/IntervalinisKomponentasHooks';
 
 class App extends Component {
   constructor() {
@@ -39,8 +41,13 @@ class App extends Component {
             name={"Vardas"}
             surname={"Pavarde"}
           />
+          <AppHooks
+            name={"Vardas"}
+            surname={"Pavarde"}
+          />
           <p>{this.state.time}</p>
         </div>
+        <IntervalinisKomponentasHooks />
         <Forma />
         <ProductAdministrationComponent />
         <Header />
