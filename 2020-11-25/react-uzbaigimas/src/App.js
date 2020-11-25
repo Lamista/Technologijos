@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Papildomas from './Papildomas';
 import Forma from './components/Forma';
+import ProductAdministrationComponent from './components/ProductAdministrationComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 class App extends Component {
@@ -39,6 +41,7 @@ class App extends Component {
           <p>{this.state.time}</p>
         </div>
         <Forma />
+        <ProductAdministrationComponent />
       </div>
     )
   }
