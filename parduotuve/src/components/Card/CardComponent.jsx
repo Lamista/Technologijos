@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Card({ title, imageUrl, description, price, quantity }) {
+const CardComponent = ({ title, imageUrl, description, price, quantity }) => {
     return (
         <div className="card">
             <img src={imageUrl} className="card-img-top" alt={title} />
@@ -15,10 +15,10 @@ function Card({ title, imageUrl, description, price, quantity }) {
                         <p>{quantity}vnt.</p>
                     </div>
                 </div>
-                <a href="#" className="btn btn-primary">Details</a>
+                <a href="..." className="btn btn-primary">Details</a>
             </div>
         </div>
     )
 }
 
-export default Card;
+export default CardComponent;

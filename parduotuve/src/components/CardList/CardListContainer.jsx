@@ -1,6 +1,6 @@
 import React from 'react';
-import Data from '../Data.json';
-import Card from './Card';
+import Data from '../../Data.json';
+import Card from '../Card/CardComponent';
 
 const CardList = () => {
     return (
