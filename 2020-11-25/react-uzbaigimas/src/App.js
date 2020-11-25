@@ -3,7 +3,8 @@ import Papildomas from './Papildomas';
 import Forma from './components/Forma';
 import ProductAdministrationComponent from './components/ProductAdministrationComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import Header from './components/HeaderComponent';
+import SokantisPaveiksliukas from './components/SokantisPaveiksliukas';
 
 class App extends Component {
   constructor() {
@@ -42,6 +43,8 @@ class App extends Component {
         </div>
         <Forma />
         <ProductAdministrationComponent />
+        <Header />
+        <SokantisPaveiksliukas />
       </div>
     )
   }
