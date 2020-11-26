@@ -3,31 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import DemonstruotiNavigacija from './components/DemonstruotiNavigacija';
 import { Switch, Redirect, Route } from 'react-router';
 import { BrowserRouter, Link } from 'react-router-dom';
 
-var DemonstruotiNavigacija = (props) => {
-  let goHome = () => props.history.push("/");
-  let { id } = props.match.params;
-  return (
-    <div>
-      At route: {props.location.pathname} (ID: {id})
-      <button onClick={goHome}>Go Home</button>
-      <pre>
-        {JSON.stringify(props, null, 2)}
-      </pre>
-    </div>
-  );
-};
-
-var AppContainer = (props) => {
+let AppContainer = (props) => {
   return (<div>
     <div>
       <Link to='/'>Home</Link> |&nbsp;
-      <Link to='/products'>Products</Link> |&nbsp;
-      <Link to={`/products/${127}`}>Product by no</Link> |&nbsp;
-      <Link to='/help'>help</Link> |&nbsp;
-      <Link to='/non-existant'>Non Existant</Link>
+          <Link to='/products'>Products</Link> |&nbsp;
+          <Link to={`/products/${127}`}>Product by no</Link> |&nbsp;
+          <Link to='/help'>help</Link> |&nbsp;
+          <Link to='/non-existant'>Non Existant</Link>
     </div>
     {props.children}
   </div>);

@@ -13,7 +13,12 @@ class Header extends Component {
     render() {
         return (
             <header className="App-header" >
-                <img src={logo} className={this.state.imgClassName} alt="logo" style={{ height: "40vmin" }} />
+                <div
+                    onMouseOver={() => this.setState({ imgClassName: "App-logo" })}
+                    onMouseOut={() => this.setState({ imgClassName: "" })}
+                >
+                    <img src={logo} className={this.state.imgClassName} alt="logo" style={{ height: "40vmin" }} />
+                </div>
                 <p>
                     Edit <code>src/App.js</code> and save to reload.
             </p>
@@ -22,8 +27,6 @@ class Header extends Component {
                     href="https://reactjs.org"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onMouseOver={() => this.setState({ imgClassName: "App-logo" })}
-                    onMouseOut={() => this.setState({ imgClassName: "" })}
                 >
                     Learn React
             </a>
