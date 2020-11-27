@@ -4,25 +4,28 @@ import img from '../images/samsung.jpg'
 
 const ProductDetailsComponent = ({ id, title, image, description, price, quantity }) => {
     return (
-        <div className="card px-1" style={{ width: '18rem' }}>
-            <img src={img} className="card-img-top" alt={title} />
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">{description}</p>
-                <div className="row">
-                    <div className="col">
-                        <p>Kaina: {price}€</p>
-                    </div>
-                    <div className="col">
-                        <p>Kiekis: {quantity}</p>
-                    </div>
+        <div>
+            <div className="media">
+                <img className="align-self-start mr-3" src={img} alt={title} style={{
+                    height: '25rem'
+                }} />
+                <div className="media-body">
+                    <h5 className="mt-0">{title}</h5>
+                    <p>{description}</p>
+                    <p>{price}€</p>
+                    <p>{quantity}</p>
                 </div>
+            </div>
+            <div className='row'>
                 <button className="btn btn-primary mr-1">+</button>
                 <button className="btn btn-primary mr-1">-</button>
                 <Link to={'/'} className="btn btn-secondary">Back</Link>
             </div>
-        </div >
+        </div>
+
     )
+
+
 }
 
 export default ProductDetailsComponent;

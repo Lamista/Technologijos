@@ -24,7 +24,7 @@ class ProductDetailsContainer extends Component {
             console.log(id)
             return (
                 <div className='container'>
-                    <div className="col-12 col-md-6 col-lg-3 my-3" key={id}>
+                    <div key={id}>
                         <ProductDetailsComponent
                             id={id}
                             {...otherProps}

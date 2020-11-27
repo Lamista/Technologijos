@@ -9,7 +9,8 @@ class UpdateAdminFormComponent extends Component {
             description: "",
             image: "",
             price: "",
-            quantity: ""
+            quantity: "",
+            id: ""
 
         }
     }
@@ -18,6 +19,7 @@ class UpdateAdminFormComponent extends Component {
         axios
             .get(`https://itpro2017.herokuapp.com/api/products/${this.props.match.params.id}`)
             .then(res => this.setState({
+                id: res.data.id,
                 title: res.data.title,
                 description: res.data.description,
                 image: res.data.image,
@@ -33,12 +35,27 @@ class UpdateAdminFormComponent extends Component {
         this.setState({ [name]: value });
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        axios.put(`https://itpro2017.herokuapp.com/api/products/${this.state.id}`, {
+            "description": this.state.description,
+            "id": this.state.id,
+            "image": this.state.image,
+            "price": this.state.price,
+            "quantity": this.state.quantity,
+            "title": this.state.title
+        })
+
+        this.props.history.push('/');
+    }
+
     render() {
         if (this.state.product !== null) {
             const { title, image, description, price, quantity } = this.state;
             return (
                 <div>
-                    <form className="container my-5" onSubmit={this.props.handleSubmit}>
+                    <form className="container my-5" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="productTitle">Title</label>
                             <input onChange={this.handleChange} type="text" className="form-control" id="productTitle" name="title" value={title} />

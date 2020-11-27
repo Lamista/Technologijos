@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import { withRouter } from 'react-router';
 import ProductAdministrationFormComponent from '../components/ProductAdministrationFormComponent'
 
 class ProductAdministrationFormContainer extends Component {
@@ -6,27 +8,46 @@ class ProductAdministrationFormContainer extends Component {
         super(props);
         this.state = {
             title: "",
-            productImage: "",
+            image: "",
             description: "",
             price: "",
             quantity: ""
         }
     }
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.productTitle.value);
-        console.log(e.target.productImage.value);
-        console.log(e.target.productDescription.value);
-        console.log(e.target.productPrice.value);
-        console.log(e.target.productQuantity.value);
+
+        axios.post("https://itpro2017.herokuapp.com/api/products", {
+            "description": e.target.description.value,
+            "id": 0,
+            "image": e.target.image.value,
+            "price": e.target.price.value,
+            "quantity": e.target.quantity.value,
+            "title": e.target.title.value
+        })
+
+        this.setState({
+            title: "",
+            image: "",
+            description: "",
+            price: "",
+            quantity: ""
+        })
+
+        this.props.history.push('/');
+    }
+
+    handleChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
     }
 
     render() {
         return (
-            <ProductAdministrationFormComponent handleSubmit={this.handleSubmit} />
+            <ProductAdministrationFormComponent handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
         )
     }
 }
 
-export default ProductAdministrationFormContainer;
+export default withRouter(ProductAdministrationFormContainer);
