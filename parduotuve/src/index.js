@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppContainer from './AppContainer';
 import reportWebVitals from './reportWebVitals';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
@@ -11,6 +11,7 @@ import NoMatch from './components/NoMatchComponent'
 import DemonstruotiNavigacija from './components/DemonstruotiNavigacijaComponent'
 import ServicesContext from './ServicesContext'
 import UserService from './UserService'
+import ProductDetailsContainer from './containers/ProductDetailsContainer';
 
 var userService = new UserService()
 
@@ -18,11 +19,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ServicesContext.Provider value={{ userService: userService }}>
-        <App>
+        <AppContainer>
           <Switch>
             <Route exact path='/' component={CardList} />
             <Route path="/products/:id"
-              component={DemonstruotiNavigacija} />
+              component={ProductDetailsContainer} />
             <Route path="/products" component={CardList} />
             <Route path="/admin/products/new" component={ProductAdministrationFormContainer} />
             <Route path="/admin/products/:id" component={ProductAdministrationFormContainer} />
@@ -30,7 +31,7 @@ ReactDOM.render(
             <Route path="*" component={NoMatch} />
             <Route component={NoMatch} />
           </Switch>
-        </App>
+        </AppContainer>
       </ServicesContext.Provider>
     </BrowserRouter>
   </React.StrictMode >,

@@ -1,12 +1,10 @@
 import React from 'react'
-import ServicesContext from '../ServicesContext.js';
+
 
 const ProductAdministrationFormComponent = ({ handleSubmit }) => {
     return (
         <div>
-            <ServicesContext.Consumer>
-                {({ userService }) => <button onClick={() => userService.username = "user1"}>Set user (login) to user1</button>}
-            </ServicesContext.Consumer>
+
             <form className="container my-5" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="productTitle">Title</label>

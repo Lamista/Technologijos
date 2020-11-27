@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Header from './components/HeaderComponent'
+import Navigation from './components/NavigationComponent'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = (props) => {
+const AppContainer = (props) => {
   return (<div>
-    <Header />
+    <Navigation />
     {props.children}
   </div>);
 };
 
-export default App;
+export default AppContainer;

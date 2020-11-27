@@ -1,43 +1,43 @@
 [
     {
         "title": "Obuolys",
-        "imageUrl": "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "imageUrl": "apple",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "1",
         "quantity": 50
     },
     {
         "title": "Telefonas",
-        "imageUrl": "https://i.pinimg.com/736x/21/ef/70/21ef7088865dd9669c949af2b4ba8548.jpg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "imageUrl": "phone",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "100",
         "quantity": 20
     },
     {
         "title": "Knyga",
-        "imageUrl": "https://dictionary.cambridge.org/pt/images/thumb/book_noun_001_01679.jpg?version=5.0.135",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "imageUrl": "book",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "30",
         "quantity": 5
     },
     {
-        "title": "Piestukas",
-        "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_41bdc4d2-b67b-4935-8dc1-ae8ef04881fb?wid=488&hei=488&fmt=pjpeg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "title": "Pieštukas",
+        "imageUrl": "pencil",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "1",
         "quantity": 20
     },
     {
-        "title": "Tusinukas",
-        "imageUrl": "https://www.officeday.lt/images/1/200-11586/fountain-pen-scrikss-knight-88-chrome-chrome-barrel-and-details-blue-ink.jpg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "title": "Rašiklis",
+        "imageUrl": "pen",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "8",
         "quantity": 1
     },
     {
-        "title": "Pelyte",
-        "imageUrl": "/images/mouse.jpg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "title": "Pelytė",
+        "imageUrl": "mouse",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "25",
         "quantity": 15
     }
