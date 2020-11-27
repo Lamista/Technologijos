@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../images/samsung.jpg'
-import defaultImg from '../images/default.png'
 
-const CardComponent = ({ id, title, image, description, price, quantity }) => {
-    let imgSrc = image === '/samsung.jpg' ? img : defaultImg;
+const ProductDetailsComponent = ({ id, title, image, description, price, quantity }) => {
     return (
         <div className="card px-1" style={{ width: '18rem' }}>
-            <img src={imgSrc} className="card-img-top" alt={title} />
+            <img src={img} className="card-img-top" alt={title} />
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{description}</p>
@@ -19,10 +17,12 @@ const CardComponent = ({ id, title, image, description, price, quantity }) => {
                         <p>Kiekis: {quantity}</p>
                     </div>
                 </div>
-                <Link to={`/products/${id}`} className="btn btn-primary">Shop</Link>
+                <button className="btn btn-primary mr-1">+</button>
+                <button className="btn btn-primary mr-1">-</button>
+                <Link to={'/'} className="btn btn-secondary">Back</Link>
             </div>
         </div >
     )
 }
 
-export default CardComponent;
+export default ProductDetailsComponent;

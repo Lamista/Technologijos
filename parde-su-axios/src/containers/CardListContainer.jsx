@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Data from '../Data.json';
+import axios from 'axios';
 import Card from '../components/CardComponent';
 import WelcomeMsg from '../components/WelcomeComponent';
-import ServicesContext from '../ServicesContext.js';
 
 class CardList extends Component {
     constructor() {
@@ -13,52 +12,28 @@ class CardList extends Component {
     }
 
     componentDidMount() {
-        this.setState({ products: Data })
+        axios
+            .get("https://itpro2017.herokuapp.com/api/products")
+            .then(res => this.setState({ products: res.data }))
+            .catch(err => console.log(err))
     }
+
     render() {
         return (
             <div className="container" >
-                <ServicesContext.Consumer>
-                    {({ userService }) => <button onClick={() => userService.username = "user1"}>Set user (login) to user1</button>}
-                </ServicesContext.Consumer>
                 <WelcomeMsg />
-                <div className="row">
-                    {this.state.products.map((item) => {
+                <div className="row d-flex justify-content-around">
+                    {this.state.products.map(({ id, ...otherProps }) => {
                         return (
-                            <div className="col-12 col-md-6 col-lg-3 my-3" key={item.title}>
+                            <div className="col-12 col-md-6 col-lg-3 m-1" key={id}>
                                 <Card
-                                    id={item.title.toLowerCase()}
-                                    title={item.title}
-                                    imageUrl={item.imageUrl}
-                                    description={item.description}
-                                    price={item.price}
-                                    quantity={item.quantity}
+                                    id={id}
+                                    {...otherProps}
                                 />
                             </div>
                         )
                     })}
                 </div>
-                {/* <h1>Kaina mazesne nei 10</h1>
-            <div className="row">
-                {Data.filter(item => item.price < 10).map((item, index) => {
-                    return (
-                        <div className="col-12 col-md-6 col-lg-3 my-3">
-                            <Card
-                                key={index}
-                                title={item.title}
-                                imageUrl={item.imageUrl}
-                                description={item.description}
-                                price={item.price}
-                                quantity={item.quantity}
-                            />
-                        </div>
-                    )
-                })}
-            </div>
-            <h1>Prekiu likucio verte: {Data.reduce((sum, item) => {
-                return sum + (item.price * item.quantity)
-            }, 0)}
-            </h1> */}
             </div >
         )
     }

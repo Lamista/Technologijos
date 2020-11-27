@@ -1,31 +1,37 @@
 import React from 'react';
 import { Component } from 'react';
-import CardComponent from '../components/CardComponent';
-import Data from '../Data.json';
+import ProductDetailsComponent from '../components/ProductDetailsComponent'
+import axios from 'axios';
 
 class ProductDetailsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: null,
-            id: props.match.params.id
+            product: null
         }
     }
 
     componentDidMount() {
-        this.setState({ product: Data.filter(product => product.title.toLocaleLowerCase() === this.state.id) })
+        axios
+            .get(`https://itpro2017.herokuapp.com/api/products/${this.props.match.params.id}`)
+            .then(res => this.setState({ product: res.data }))
+            .catch(err => console.log(err))
     }
 
     render() {
         if (this.state.product !== null) {
-            return (<CardComponent
-                id={this.state.product.id}
-                title={this.state.product.title}
-                imageUrl={this.state.product.imageUrl}
-                description={this.state.product.description}
-                price={this.state.product.price}
-                quantity={this.state.product.quantity}
-            />)
+            const { id, ...otherProps } = this.state.product;
+            console.log(id)
+            return (
+                <div className='container'>
+                    <div className="col-12 col-md-6 col-lg-3 my-3" key={id}>
+                        <ProductDetailsComponent
+                            id={id}
+                            {...otherProps}
+                        />
+                    </div>
+                </div>
+            )
         } else {
             return (<div>Loading...</div>)
         }
