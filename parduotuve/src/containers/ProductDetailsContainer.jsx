@@ -13,7 +13,7 @@ class ProductDetailsContainer extends Component {
     }
 
     componentDidMount() {
-        this.setState({ product: Data.filter(product => product.id = this.state.id) })
+        this.setState({ product: Data.filter(product => product.title.toLocaleLowerCase() === this.state.id) })
     }
 
     render() {

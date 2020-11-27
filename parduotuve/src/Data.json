@@ -1,41 +1,41 @@
 [
     {
-        "title": "Obuolys",
+        "title": "Apple",
         "imageUrl": "apple",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "1",
         "quantity": 50
     },
     {
-        "title": "Telefonas",
+        "title": "Phone",
         "imageUrl": "phone",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "100",
         "quantity": 20
     },
     {
-        "title": "Knyga",
+        "title": "Book",
         "imageUrl": "book",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "30",
         "quantity": 5
     },
     {
-        "title": "Pieštukas",
+        "title": "Pencil",
         "imageUrl": "pencil",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "1",
         "quantity": 20
     },
     {
-        "title": "Rašiklis",
+        "title": "Pen",
         "imageUrl": "pen",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "8",
         "quantity": 1
     },
     {
-        "title": "Pelytė",
+        "title": "Mouse",
         "imageUrl": "mouse",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "price": "25",
