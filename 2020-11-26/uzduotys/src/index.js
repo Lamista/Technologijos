@@ -3,22 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import ServicesContext from './ServicesContext'
-import UserService from './UserService'
-
-document.title = "E-shop";
-
-var userService = new UserService()
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ServicesContext.Provider value={{ userService: userService }}>
-        <App />
-      </ServicesContext.Provider>
-    </BrowserRouter>
-  </React.StrictMode >,
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
