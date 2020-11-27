@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import ProductAdministrationFormComponent from './ProductAdministrationFromComponent'
+import ProductAdministrationFormComponent from '../components/ProductAdministrationFormComponent'
 
-export class ProductAdministrationComponent extends Component {
+class ProductAdministrationFormContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,4 +29,4 @@ export class ProductAdministrationComponent extends Component {
     }
 }
 
-export default ProductAdministrationComponent;
+export default ProductAdministrationFormContainer;
