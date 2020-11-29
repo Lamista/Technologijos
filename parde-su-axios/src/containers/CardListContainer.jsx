@@ -22,15 +22,14 @@ class CardList extends Component {
         return (
             <div className="container" >
                 <WelcomeMsg />
-                <div className="row d-flex justify-content-around">
+                <div className="row row-cols-1 row-cols-md-4">
                     {this.state.products.map(({ id, ...otherProps }) => {
                         return (
-                            <div className="col-12 col-md-6 col-lg-3 m-1" key={id}>
-                                <Card
-                                    id={id}
-                                    {...otherProps}
-                                />
-                            </div>
+                            <Card
+                                key={id}
+                                id={id}
+                                {...otherProps}
+                            />
                         )
                     })}
                 </div>

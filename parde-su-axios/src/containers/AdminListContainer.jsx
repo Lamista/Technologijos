@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AdminTableComponent from "../components/AdminTableComponent";
-import itemImg from "../images/samsung.jpg";
+import img from '../images/samsung.jpg'
+import defaultImg from '../images/default.png'
 import { Link } from "react-router-dom";
 
 export default class AdminListContainer extends Component {
@@ -25,8 +26,8 @@ export default class AdminListContainer extends Component {
 
     render() {
         const { data } = this.state.products;
-        console.log(data);
         if (data) {
+            console.log(data);
             return (
                 <div className="container mt-5">
                     <Link to={`/admin/products/new`} className="btn btn-primary mb-5">
@@ -40,11 +41,11 @@ export default class AdminListContainer extends Component {
                                 <th scope="col">Title</th>
                             </tr>
                         </thead>
-                        {data.map(({ id, ...otherProps }) => (
+                        {data.map(({ id, image, ...otherProps }) => (
                             <AdminTableComponent
                                 key={id}
                                 id={id}
-                                itemImg={itemImg}
+                                itemImg={image === '/samsung.jpg' ? img : defaultImg}
                                 {...otherProps}
                             />
                         ))}
@@ -52,7 +53,13 @@ export default class AdminListContainer extends Component {
                 </div>
             );
         } else {
-            return <div>Loading...</div>;
+            return (
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            );
         }
     }
 }

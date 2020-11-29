@@ -45,9 +45,8 @@ class UpdateAdminFormComponent extends Component {
             "price": this.state.price,
             "quantity": this.state.quantity,
             "title": this.state.title
-        })
+        }).then(() => this.props.history.push('/admin/products'))
 
-        this.props.history.push('/');
     }
 
     render() {

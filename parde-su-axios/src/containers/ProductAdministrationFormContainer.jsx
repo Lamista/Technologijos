@@ -25,7 +25,7 @@ class ProductAdministrationFormContainer extends Component {
             "price": e.target.price.value,
             "quantity": e.target.quantity.value,
             "title": e.target.title.value
-        })
+        }).then(() => this.props.history.push('/admin/products'))
 
         this.setState({
             title: "",
@@ -35,7 +35,6 @@ class ProductAdministrationFormContainer extends Component {
             quantity: ""
         })
 
-        this.props.history.push('/');
     }
 
     handleChange = (e) => {

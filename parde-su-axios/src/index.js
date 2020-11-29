@@ -5,16 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import ServicesContext from './ServicesContext'
-import UserService from './UserService'
+import UserService from './services/UserService'
+import UserProductsService from './services/UserProductsService'
 
 document.title = "E-shop";
 
-var userService = new UserService()
+let userService = new UserService()
+let userProductsService = new UserProductsService()
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ServicesContext.Provider value={{ userService: userService }}>
+      <ServicesContext.Provider value={{ userService: userService, userProductsService: userProductsService }}>
         <App />
       </ServicesContext.Provider>
     </BrowserRouter>

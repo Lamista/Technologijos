@@ -8,6 +8,7 @@ import AdminListContainer from './containers/AdminListContainer'
 import ProductDetails from './containers/ProductDetailsContainer';
 import NoMatch from './components/NoMatchComponent';
 import UpdateAdminFormComponent from './components/UpdateAdminFormComponent'
+import CartDetailsComponent from './components/CartDetailsComponent'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -22,7 +23,7 @@ const App = (props) => (
       <Route path="/admin/products/new" component={ProductAdministrationForm} />
       <Route path="/admin/products/:id" component={UpdateAdminFormComponent} />
       <Route path="/admin/products" component={AdminListContainer} />
-
+      <Route path="/users/:username/cart-products" component={CartDetailsComponent} />
       <Route path="*" component={NoMatch} />
       <Route component={NoMatch} />
     </Switch>

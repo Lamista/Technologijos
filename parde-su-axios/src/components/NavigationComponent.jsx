@@ -1,29 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import ServicesContext from '../ServicesContext';
 import CartInfo from './CartInfoComponent'
+import UsernameComponent from './UsernameComponent'
 
 const Navigation = () => {
+    const { userService } = useContext(ServicesContext);
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
+        <nav className="navbar navbar-light navbar-expand" style={{ backgroundColor: "#e3f2fd" }}>
             <div className='container'>
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to="/">Home</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to={`/admin/products`}>Admin</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <input className="form-control mr-sm-2" type="text" placeholder="Username" />
-                    </li>
+                <ul className="nav navbar-nav">
+                    <NavLink className="nav-link" exact to="/">Home</NavLink>
+                    <NavLink className='nav-link' to={`/admin/products`}>Admin</NavLink>
+                    <UsernameComponent />
                 </ul>
-                <div className="form-inline my-2 my-lg-0 nav-item">
-                    <NavLink className='nav-link' to={'/cart'} >
+                <ul className="nav navbar-nav navbar-right">
+                    <NavLink className="nav-link" to={`/users/${userService.username}/cart-products`}>
                         <CartInfo />
                     </NavLink>
-                </div>
+                </ul>
             </div>
-        </nav>
+        </nav >
     )
 }
 
