@@ -16,7 +16,7 @@ let userProductsService = new UserProductsService()
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ServicesContext.Provider value={{ userService: userService, userProductsService: userProductsService }}>
+      <ServicesContext.Provider value={{ userService, userProductsService }}>
         <App />
       </ServicesContext.Provider>
     </BrowserRouter>

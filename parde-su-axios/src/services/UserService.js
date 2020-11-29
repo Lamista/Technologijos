@@ -1,44 +1,18 @@
-// import { Component } from "react";
-
-// class UserService extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             username: "Anonymous"
-//         }
-//     }
-
-
-//     getUsername = () => {
-//         return this.state.username;
-//     }
-
-//     setUsername = (name) => {
-//         this.setState({ username: name })
-//         this.updateMe();
-//     }
-
-//     updateMe = () => { }
-// }
-
-// export default UserService
-
-
 class UserService {
     constructor() {
         this.username = "Anonymous";
     }
+    getUsername = () => {
+        return this.username;
+    }
 
-    // getUsername = () => {
-    //     return this.username;
-    // }
+    setUsername = (name) => {
+        this.username = name;
+        this.updateMe();
+    }
 
-    // setUsername = (name) => {
-    //     this.username = name;
-    //     this.updateMe();
-    // }
+    updateMe = () => { }
 
-    // updateMe = () => { }
 }
 
 export default UserService
