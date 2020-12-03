@@ -1,17 +1,26 @@
 class UserService {
     constructor() {
-        this.username = "Anonymous";
+        this._currentUser = undefined;
+        this._cartCount = 0;
     }
-    getUsername = () => {
-        return this.username;
-    }
-
-    setUsername = (name) => {
-        this.username = name;
-        this.updateMe();
+    getCurrentUser = () => {
+        return this._currentUser;
     }
 
-    updateMe = () => { }
+    getCartCount = () => {
+        return this._cartCount;
+    }
+
+    setCurrentUser = (username) => {
+        this._currentUser = username;
+    }
+
+    setCartCount = (count) => {
+        this._cartCount = count;
+    }
+
+    updateCurrentUser = () => { }
+    updateCartCount = () => { }
 
 }
 
