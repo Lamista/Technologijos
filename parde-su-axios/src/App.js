@@ -6,7 +6,7 @@ import ProductListContainer from './components/ProductList/ProductListContainer'
 import AdminTableContainer from './components/ProductAdministration/AdminTableContainer'
 import ProductDetails from './components/ProductDetails/ProductDetailsContainer';
 import ProductAdministrationFormContainer from './components/ProductAdministration/ProductAdministrationFormContainer';
-import CartDetailsComponent from './components/CartDetails/CartDetailsComponent';
+import CartDetailsContainer from './components/CartDetails/CartDetailsContainer';
 import NoMatch from './components/NoMatch/NoMatchComponent';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +22,7 @@ const App = (props) => (
       <Route path='/admin/products/new' component={ProductAdministrationFormContainer} />
       <Route path='/admin/products/:id' component={ProductAdministrationFormContainer} />
       <Route path='/admin/products' component={AdminTableContainer} />
-      <Route path='/users/:username/cart-products' component={CartDetailsComponent} />
+      <Route path='/users/:username/cart-products' component={CartDetailsContainer} />
       <Route path='*' component={NoMatch} />
       <Route component={NoMatch} />
     </Switch>

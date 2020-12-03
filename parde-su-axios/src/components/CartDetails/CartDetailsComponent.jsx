@@ -1,39 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-import ServicesContext from '../../context/ServicesContext';
-
-import img from '../../images/samsung.jpg';
+import samsungImg from '../../images/samsung.jpg';
 import defaultImg from '../../images/default.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const CartDetailsComponent = () => {
-    const { userService } = useContext(ServicesContext);
+const CartDetailsComponent = ({ userProducts, currentUser, deleteFromCart }) => {
 
-    const [userProducts, setUserProducts] = useState([]);
-    const [currentUser, setCurrentUser] = useState(userService.getCurrentUser());
-
-    userService.updateCurrentUser = () => setCurrentUser(userService.getCurrentUser());
-
-    useEffect(() => {
-        axios
-            .get(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products`)
-            .then(res => {
-                setUserProducts(res.data);
-            })
-            .catch(err => console.log(err))
-    }, [currentUser])
-
-    const deleteFromCart = (e) => {
-        axios
-            .delete(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products/${e.target.value}`)
-            .then((res) => {
-                setUserProducts(res.data);
-                userService.setCartCount(res.data.length);
-                userService.updateCartCount()
-            })
-    }
-
-    console.log(userProducts)
     if (userProducts.length > 0) {
         return (
             <div className='container mt-5'>
@@ -50,14 +23,14 @@ const CartDetailsComponent = () => {
                             <tr>
                                 <td>
                                     <img
-                                        src={image === '/samsung.jpg' ? img : defaultImg}
+                                        src={image === '/samsung.jpg' ? samsungImg : image.substring(0, 5) === 'https' ? image : defaultImg}
                                         className='card-img-top'
                                         style={{ width: 50, height: 50 }}
                                         alt={title}
                                     />
                                 </td>
                                 <td>{title}</td>
-                                <td><button className='btn btn-danger' onClick={deleteFromCart} value={id}>Remove from cart</button></td>
+                                <td><button className='btn btn-danger' onClick={deleteFromCart} value={id}>Remove from cart <FontAwesomeIcon icon={faTrashAlt} /></button></td>
                             </tr>
                         </tbody>
                     ))}
