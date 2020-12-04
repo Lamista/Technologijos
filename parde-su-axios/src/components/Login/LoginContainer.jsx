@@ -7,13 +7,13 @@ import ServicesContext from '../../context/ServicesContext.js';
 import LoginComponent from './LoginComponent';
 
 const LoginContainer = () => {
-    const { userService } = useContext(ServicesContext);
+    const { userCartService } = useContext(ServicesContext);
     const history = useHistory();
 
-    const [currentUser, setCurrentUser] = useState(userService.getCurrentUser());
+    const [currentUser, setCurrentUser] = useState(userCartService.getCurrentUser());
     const [username, setUsername] = useState('');
 
-    userService.updateCurrentUser = () => setCurrentUser(userService.getCurrentUser(), console.log(userService.getCurrentUser()));
+    userCartService.updateCurrentUser = () => setCurrentUser(userCartService.getCurrentUser(), console.log(userCartService.getCurrentUser()));
 
     const handleChange = (e) => {
         setUsername(e.target.value)
@@ -21,14 +21,14 @@ const LoginContainer = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         const name = e.target.username.value;
-        userService.setCurrentUser(name);
-        userService.updateCurrentUser();
+        userCartService.setCurrentUser(name);
+        userCartService.updateCurrentUser();
         setUsername('');
         axios
             .get(`https://itpro2017.herokuapp.com/api/users/${name}/cart-products`)
             .then(res => {
-                userService.setCartCount(res.data.length);
-                userService.updateCartCount();
+                userCartService.setCartCount(res.data.length);
+                userCartService.updateCartCount();
             })
             .catch(err => console.log(err))
 
@@ -36,11 +36,11 @@ const LoginContainer = () => {
     }
     const handleLogout = (e) => {
         e.preventDefault();
-        userService.setCurrentUser(undefined);
+        userCartService.setCurrentUser(undefined);
         setCurrentUser(undefined);
-        userService.updateCurrentUser();
-        userService.setCartCount(0);
-        userService.updateCartCount();
+        userCartService.updateCurrentUser();
+        userCartService.setCartCount(0);
+        userCartService.updateCartCount();
 
         history.push('/');
 

@@ -6,22 +6,22 @@ import ServicesContext from '../../context/ServicesContext';
 import CartSummaryComponent from './CartSummaryComponent';
 
 const CartSummaryContainer = () => {
-    const { userService } = useContext(ServicesContext);
+    const { userCartService } = useContext(ServicesContext);
 
-    const [currentUser, setCurrentUser] = useState(userService.getCurrentUser());
-    const [cartCount, setCartCount] = useState(userService.getCartCount());
+    const [currentUser, setCurrentUser] = useState(userCartService.getCurrentUser());
+    const [cartCount, setCartCount] = useState(userCartService.getCartCount());
 
-    userService.updateCurrentUser = () => setCurrentUser(userService.getCurrentUser());
-    userService.updateCartCount = () => setCartCount(userService.getCartCount());
+    userCartService.updateCurrentUser = () => setCurrentUser(userCartService.getCurrentUser());
+    userCartService.updateCartCount = () => setCartCount(userCartService.getCartCount());
 
     useEffect(() => {
         if (currentUser !== undefined) {
             axios
                 .get(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products`)
-                .then(res => { userService.setCartCount(res.data.length()); userService.updateCartCount(); })
+                .then(res => { userCartService.setCartCount(res.data.length()); userCartService.updateCartCount(); })
                 .catch(err => console.log(err))
         }
-    }, [currentUser, cartCount, userService])
+    }, [currentUser, cartCount, userCartService])
 
     return (
         <CartSummaryComponent

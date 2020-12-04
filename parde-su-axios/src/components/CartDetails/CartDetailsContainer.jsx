@@ -6,12 +6,12 @@ import ServicesContext from '../../context/ServicesContext';
 import CartDetailsComponent from './CartDetailsComponent';
 
 const CartDetailsContainer = () => {
-    const { userService } = useContext(ServicesContext);
+    const { userCartService } = useContext(ServicesContext);
 
     const [userProducts, setUserProducts] = useState([]);
-    const [currentUser, setCurrentUser] = useState(userService.getCurrentUser());
+    const [currentUser, setCurrentUser] = useState(userCartService.getCurrentUser());
 
-    userService.updateCurrentUser = () => setCurrentUser(userService.getCurrentUser());
+    userCartService.updateCurrentUser = () => setCurrentUser(userCartService.getCurrentUser());
 
     useEffect(() => {
         axios
@@ -27,8 +27,8 @@ const CartDetailsContainer = () => {
             .delete(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products/${e.target.value}`)
             .then((res) => {
                 setUserProducts(res.data);
-                userService.setCartCount(res.data.length);
-                userService.updateCartCount();
+                userCartService.setCartCount(res.data.length);
+                userCartService.updateCartCount();
             })
     }
 

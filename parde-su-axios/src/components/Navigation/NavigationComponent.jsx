@@ -5,9 +5,9 @@ import CartSummaryContainer from '../CartSummary/CartSummaryContainer';
 import LoginContainer from '../Login/LoginContainer';
 
 const Navigation = () => {
-    const { userService } = useContext(ServicesContext);
-    const [currentUser, setCurrentUser] = useState(userService.getCurrentUser());
-    userService.updateCurrentUser = () => setCurrentUser(userService.getCurrentUser());
+    const { userCartService } = useContext(ServicesContext);
+    const [currentUser, setCurrentUser] = useState(userCartService.getCurrentUser());
+    userCartService.updateCurrentUser = () => setCurrentUser(userCartService.getCurrentUser());
     return (
         <nav className='navbar navbar-light navbar-expand-md' style={{ backgroundColor: '#e3f2fd' }}>
             <div className='container'>

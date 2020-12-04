@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import ServicesContext from './context/ServicesContext'
-import UserService from './services/UserService'
+import UserCartService from './services/UserCartService'
 
 import App from './App';
 
@@ -11,12 +11,12 @@ import './index.css';
 
 document.title = 'E-shop';
 
-const userService = new UserService();
+const userCartService = new UserCartService();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ServicesContext.Provider value={{ userService }}>
+      <ServicesContext.Provider value={{ userCartService }}>
         <App />
       </ServicesContext.Provider>
     </BrowserRouter>

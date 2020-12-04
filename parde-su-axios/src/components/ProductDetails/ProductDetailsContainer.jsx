@@ -8,12 +8,12 @@ import ProductDetailsComponent from './ProductDetailsComponent';
 
 const ProductDetailsContainer = (props) => {
 
-    const { userService } = useContext(ServicesContext);
-    const [currentUser, setCurrentUser] = useState(userService.getCurrentUser());
+    const { userCartService } = useContext(ServicesContext);
+    const [currentUser, setCurrentUser] = useState(userCartService.getCurrentUser());
     const [product, setProduct] = useState(null);
 
 
-    userService.updateCurrentUser = () => setCurrentUser(userService.getCurrentUser());
+    userCartService.updateCurrentUser = () => setCurrentUser(userCartService.getCurrentUser());
 
     useEffect(() => {
         axios
@@ -32,8 +32,8 @@ const ProductDetailsContainer = (props) => {
                     'title': product.title
                 })
             .then(res => {
-                userService.setCartCount(res.data.length);
-                userService.updateCartCount();
+                userCartService.setCartCount(res.data.length);
+                userCartService.updateCartCount();
             })
             .catch(err => console.log(err))
     }
@@ -47,9 +47,10 @@ const ProductDetailsContainer = (props) => {
                     <ProductDetailsComponent
                         id={id}
                         currentUser={currentUser}
-                        userService={userService}
+                        userCartService={userCartService}
                         image={image}
                         addToCart={addToCart}
+                        title={title}
                         {...otherProps}
                     />
                 </div>
