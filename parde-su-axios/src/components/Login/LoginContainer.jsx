@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router';
+import baseUrl from '../../AppConfig';
 
 import ServicesContext from '../../context/ServicesContext.js';
 
@@ -25,14 +26,19 @@ const LoginContainer = () => {
         userCartService.updateCurrentUser();
         setUsername('');
         axios
-            .get(`https://itpro2017.herokuapp.com/api/users/${name}/cart-products`)
-            .then(res => {
-                userCartService.setCartCount(res.data.length);
-                userCartService.updateCartCount();
-            })
-            .catch(err => console.log(err))
-
-        history.push('/');
+            .post(`${baseUrl}/api/users/`,
+                {
+                    'username': name
+                })
+            //pranesti, kad pavyko susikurti?
+            .then(() => axios
+                .get(`${baseUrl}/api/users/${name}/cart-products`)
+                .then(res => {
+                    userCartService.setCartCount(res.data.length);
+                    userCartService.updateCartCount();
+                })
+                .catch(err => console.log(err)))
+            .then(() => history.push('/'))
     }
     const handleLogout = (e) => {
         e.preventDefault();

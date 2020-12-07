@@ -17,7 +17,7 @@ const ProductCardComponent = ({ id, title, image, description, price, quantity }
                     <p className='card-text'>{description}</p>
                     <div className='row'>
                         <div className='col'>
-                            <p>Kaina: {price}€</p>
+                            <p>Kaina: {Math.round(price * 100) / 100}€</p>
                         </div>
                         <div className='col'>
                             <p>Kiekis: {quantity}</p>

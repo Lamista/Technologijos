@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import baseUrl from '../../AppConfig';
 
 import ProductCardComponent from './ProductCardComponent';
 
@@ -8,7 +9,7 @@ const ProductListComponent = () => {
 
     useEffect(() => {
         axios
-            .get('https://itpro2017.herokuapp.com/api/products')
+            .get(`${baseUrl}/api/products`)
             .then(res => setProducts(res.data))
             .catch(err => console.log(err))
     }, []);

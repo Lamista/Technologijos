@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import baseUrl from '../../AppConfig';
 
 import ServicesContext from '../../context/ServicesContext';
 
@@ -17,7 +18,7 @@ const ProductDetailsContainer = (props) => {
 
     useEffect(() => {
         axios
-            .get(`https://itpro2017.herokuapp.com/api/products/${props.match.params.id}`)
+            .get(`${baseUrl}/api/products/${props.match.params.id}`)
             .then(res => setProduct(res.data))
             .catch(err => console.log(err))
     }, [props.match.params.id]);
@@ -25,15 +26,23 @@ const ProductDetailsContainer = (props) => {
 
     const addToCart = () => {
         axios
-            .post(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products`,
+            .post(`${baseUrl}/api/users/${currentUser}/cart-products`,
                 {
                     'id': product.id,
                     'image': product.image || '',
                     'title': product.title
                 })
-            .then(res => {
-                userCartService.setCartCount(res.data.length);
-                userCartService.updateCartCount();
+            .then(() => {
+                axios
+                    .get(`${baseUrl}/api/users/${currentUser}/cart-products`)
+                    .then((res) => {
+                        userCartService.setCartCount(res.data.length);
+                        userCartService.updateCartCount();
+                    })
+                // javoj post metodas galetu grazint userio produktus
+                // .then(res => {
+                //     userCartService.setCartCount(res.data.length);
+                //     userCartService.updateCartCount();
             })
             .catch(err => console.log(err))
     }

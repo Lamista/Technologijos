@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import baseUrl from '../../AppConfig';
 
 import AdminProductComponent from './AdminProductComponent';
 
@@ -18,7 +19,7 @@ class AdminListContainer extends Component {
 
     componentDidMount() {
         axios
-            .get('https://itpro2017.herokuapp.com/api/products')
+            .get(`${baseUrl}/api/products`)
             .then((prod) => {
                 this.setState({ products: prod });
             })

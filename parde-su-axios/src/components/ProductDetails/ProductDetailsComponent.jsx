@@ -15,7 +15,7 @@ const ProductDetailsComponent = ({ title, image, description, price, quantity, c
                 <div className='media-body mt-3'>
                     <h5 className='mt-0'>{title}</h5>
                     <p>{description}</p>
-                    <p>Kaina: {price}€</p>
+                    <p>Kaina: {Math.round(price * 100) / 100}€</p>
                     <p>Kiekis: {quantity} vnt.</p>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import baseUrl from '../../AppConfig';
 
 import ProductAdministrationFormComponent from './ProductAdministrationFormComponent';
 
@@ -20,7 +21,7 @@ class ProductAdministrationFormContainer extends Component {
     componentDidMount() {
         if (this.props.match.params.id > 0) {
             axios
-                .get(`https://itpro2017.herokuapp.com/api/products/${this.props.match.params.id}`)
+                .get(`${baseUrl}/api/products/${this.props.match.params.id}`)
                 .then(res => this.setState({
                     id: res.data.id || '',
                     title: res.data.title || '',
@@ -38,7 +39,7 @@ class ProductAdministrationFormContainer extends Component {
         e.preventDefault();
 
         if (this.state.id > 0) {
-            axios.put(`https://itpro2017.herokuapp.com/api/products/${this.state.id}`, {
+            axios.put(`${baseUrl}/api/products/${this.state.id}`, {
                 'description': this.state.description,
                 'id': this.state.id,
                 'image': this.state.image,
@@ -47,7 +48,7 @@ class ProductAdministrationFormContainer extends Component {
                 'title': this.state.title
             }).then(() => this.props.history.push('/admin/products'))
         } else {
-            axios.post('https://itpro2017.herokuapp.com/api/products', {
+            axios.post(`${baseUrl}/api/products`, {
                 'description': e.target.description.value,
                 'id': this.state.id,
                 'image': e.target.image.value,

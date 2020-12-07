@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import baseUrl from '../../AppConfig';
 
 import ServicesContext from '../../context/ServicesContext';
 
@@ -15,7 +16,7 @@ const CartDetailsContainer = () => {
 
     useEffect(() => {
         axios
-            .get(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products`)
+            .get(`${baseUrl}/api/users/${currentUser}/cart-products`)
             .then(res => {
                 setUserProducts(res.data);
             })
@@ -24,11 +25,22 @@ const CartDetailsContainer = () => {
 
     const deleteFromCart = (e) => {
         axios
-            .delete(`https://itpro2017.herokuapp.com/api/users/${currentUser}/cart-products/${e.target.value}`)
-            .then((res) => {
-                setUserProducts(res.data);
-                userCartService.setCartCount(res.data.length);
-                userCartService.updateCartCount();
+            .delete(`${baseUrl}/api/users/${currentUser}/cart-products/${e.target.value}`)
+            .then(() => {
+                axios
+                    .get(`${baseUrl}/api/users/${currentUser}/cart-products`)
+                    .then((res) => {
+                        setUserProducts(res.data);
+                        userCartService.setCartCount(res.data.length);
+                        userCartService.updateCartCount();
+                    })
+                    //jei response body javoj iskart grazintu products nereiktu axios
+                    // .then((res) => {
+                    //     setUserProducts(res.data);
+                    //     userCartService.setCartCount(res.data.length);
+                    //     userCartService.updateCartCount();
+                    // })
+                    .catch(err => console.log(err))
             })
     }
 

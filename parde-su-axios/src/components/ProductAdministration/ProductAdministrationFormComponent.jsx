@@ -20,7 +20,7 @@ const ProductAdministrationFormComponent = ({ handleChange, handleSubmit, ...oth
                 <div className='row'>
                     <div className='form-group col-6'>
                         <label htmlFor='productPrice'>Price</label>
-                        <input onChange={handleChange} type='text' className='form-control' id='productPrice' name='price' value={price} />
+                        <input onChange={handleChange} type='text' className='form-control' id='productPrice' name='price' value={Math.round(price * 100) / 100} />
                     </div>
                     <div className='form-group col-6'>
                         <label htmlFor='productQuantity'>Quantity</label>
